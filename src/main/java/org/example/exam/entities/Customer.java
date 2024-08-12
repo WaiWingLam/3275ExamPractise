@@ -16,8 +16,9 @@ public class Customer {
 
     @jakarta.persistence.Id
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private int customerId;
     private String name;
     private double deposit;
     private int years;

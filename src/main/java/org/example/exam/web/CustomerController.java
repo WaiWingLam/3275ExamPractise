@@ -38,8 +38,8 @@ public class CustomerController {
         } else {
             mm.put("e", 0);
             mm.put("a", 0);
-            long key = Long.parseLong(keyword);
-            customers = customerRepository.findCustomerById(key);
+            int key = Integer.parseInt(keyword);
+            customers = customerRepository.findCustomerByCustomerId(key);
         }
         model.addAttribute("listCustomers", customers);
         return "customers";
@@ -74,7 +74,7 @@ public class CustomerController {
     @PostMapping("/add")
     public String add(Model model, Customer customer, BindingResult bindingResult, ModelMap mm, HttpSession session, RedirectAttributes redirectAttributes) {
 
-        if (customerRepository.existsById(customer.getId())) {
+        if (customerRepository.findCustomerByCustomerId(customer.getCustomerId()) == null) {
             redirectAttributes.addFlashAttribute("err", "Customer already exists. Choose another number.");
             return "redirect:index";
         } else {
@@ -134,11 +134,13 @@ public class CustomerController {
 
                 double ending = init + fInterest;
 
-                Investment row = new Investment(null, i, init, fInterest, ending);
+                double fEnding = Double.parseDouble(df.format(ending));
+
+                Investment row = new Investment(null, i, init, fInterest, fEnding);
 
                 investmentList.add(row);
 
-                init = ending;
+                init = fEnding;
             }
         } else {
             for (int i = 1; i <= customer.getYears(); i++){

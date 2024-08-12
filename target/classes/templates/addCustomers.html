@@ -15,9 +15,9 @@
         <h1>Add an entry</h1>
         <form method="post" th:action="@{add}">
             <div>
-                <label>ID</label>
-                <input class="form-control" type="text" name="id" th:value="${customer.id}">
-                <span th:errors="${customer.id}"></span>
+                <label>Customer Number</label>
+                <input class="form-control" type="text" name="customerId" th:value="${customer.customerId}">
+                <span th:errors="${customer.customerId}"></span>
             </div>
             <div>
                 <label>Customer Name</label>
@@ -36,7 +36,7 @@
             </div>
             <div>
                 <label for="type">Saving Type</label>
-                <select class="form-control" id="type" name="type" th:field="${customer.type}">
+                <select class="form-select" id="type" name="type" th:field="${customer.type}">
                     <option value="Savings-Deluxe">Savings-Deluxe</option>
                     <option value="Savings-Regular">Savings-Regular</option>
                 </select>

@@ -13,9 +13,13 @@
     <div class="col-md-6 offset-3">
         <form method="post" th:action="@{save}">
             <div>
-                <label>ID</label>
-                <input class="form-control" type="text" name="id" th:value="${customer.id}">
+                <input class="form-control" type="hidden" name="id" th:value="${customer.id}">
                 <span th:errors="${customer.id}"></span>
+            </div>
+            <div>
+                <label>Customer Number</label>
+                <input class="form-control" type="text" name="customerId" th:value="${customer.customerId}">
+                <span th:errors="${customer.customerId}"></span>
             </div>
             <div>
                 <label>Customer Name</label>
@@ -37,13 +41,13 @@
             </div>
             <div>
                 <label for="type">Saving Type</label>
-                <select id="type" name="type" th:field="${customer.type}">
+                <select class="form-select" id="type" name="type" th:field="${customer.type}">
                     <option value="Savings-Deluxe">Savings-Deluxe</option>
                     <option value="Savings-Regular">Savings-Regular</option>
                 </select>
                 <span th:errors="${customer.type}"></span>
             </div>
-
+            <br>
             <button type="submit" class="btn-success" th:href="@{/index}" >Save</button>
         </form>
     </div>

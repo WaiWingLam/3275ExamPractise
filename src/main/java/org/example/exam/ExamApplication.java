@@ -17,9 +17,9 @@ public class ExamApplication {
     @Bean
     CommandLineRunner commandLineRunner(CustomerRepository customerRepository){
         return args -> {
-            customerRepository.save(new Customer(115L, "Jasper Diaz", 15000.0, 5, "Savings-Deluxe"));
-            customerRepository.save(new Customer(112L, "Zanip Mendez", 5000.0, 2, "Savings-Deluxe"));
-            customerRepository.save(new Customer(113L, "Geronima Esper", 6000.0, 5, "Savings-Regular"));
+            customerRepository.save(new Customer(null, 115, "Jasper Diaz", 15000.0, 5, "Savings-Deluxe"));
+            customerRepository.save(new Customer(null, 112, "Zanip Mendez", 5000.0, 2, "Savings-Deluxe"));
+            customerRepository.save(new Customer(null, 113, "Geronima Esper", 6000.0, 5, "Savings-Regular"));
             customerRepository.findAll().forEach(p->{
                 System.out.println(p.getName());
             });
