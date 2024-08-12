@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="col-md-6 offset-3">
+        <h1>Add an entry</h1>
+        <form method="post" th:action="@{add}">
+            <div>
+                <label>ID</label>
+                <input class="form-control" type="text" name="id" th:value="${customer.id}">
+                <span th:errors="${customer.id}"></span>
+            </div>
+            <div>
+                <label>Customer Name</label>
+                <input class="form-control" type="text" name="name" th:value="${customer.name}">
+                <span th:errors="${customer.name}"></span>
+            </div>
+            <div>
+                <label>Customer Deposit</label>
+                <input class="form-control" type="text" name="deposit" th:value="${customer.deposit}">
+                <span th:errors="${customer.deposit}"></span>
+            </div>
+            <div>
+                <label>Number of years</label>
+                <input class="form-control" type="text" name="years" th:value="${customer.years}">
+                <span th:errors="${customer.years}"></span>
+            </div>
+            <div>
+                <label for="type">Saving Type</label>
+                <select class="form-control" id="type" name="type" th:field="${customer.type}">
+                    <option value="Savings-Deluxe">Savings-Deluxe</option>
+                    <option value="Savings-Regular">Savings-Regular</option>
+                </select>
+                <span th:errors="${customer.type}"></span>
+            </div>
+            <br>
+            <button type="submit" class="btn-success" th:href="@{/index}" >Add</button>
+        </form>
+    </div>
+</section>
+</body>
+</html>
